@@ -1,4 +1,8 @@
-import { ListItem, ListItemText } from "@mui/material";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import {
+    CheckBoxOutlineBlankOutlined,
+    CheckBoxOutlined,
+} from "@mui/icons-material";
 
 interface Props {
     task: FullTask;
@@ -9,20 +13,7 @@ const TaskListItem = ({ task, onStatusChange }: Props) => {
     const { id, title, status } = task;
 
     const handleStatusClick = () => {
-        let newStatus: Status;
-        switch (status) {
-            case "not done":
-                newStatus = "in progress";
-                break;
-            case "in progress":
-                newStatus = "done";
-                break;
-            case "done":
-                newStatus = "not done";
-                break;
-            default:
-                newStatus = "not done";
-        }
+        const newStatus: Status = status === "done" ? "not done" : "done";
         onStatusChange(id, newStatus);
     };
 
@@ -30,6 +21,13 @@ const TaskListItem = ({ task, onStatusChange }: Props) => {
         <>
             <ListItem onClick={handleStatusClick}>
                 <ListItemText>{title}</ListItemText>
+                <ListItemIcon>
+                    {status === "done" ? (
+                        <CheckBoxOutlined />
+                    ) : (
+                        <CheckBoxOutlineBlankOutlined />
+                    )}
+                </ListItemIcon>
             </ListItem>
         </>
     );

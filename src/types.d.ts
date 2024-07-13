@@ -1,4 +1,4 @@
-type Status = "done" | "in progress" | "not done";
+type Status = "done" | "not done";
 
 interface NewTask {
     title: string;

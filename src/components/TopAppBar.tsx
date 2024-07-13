@@ -22,7 +22,7 @@ const TopAppBar = ({ title }: Props) => {
                 sx={{
                     justifyContent: "space-between",
                     height: 64,
-                    color: theme.palette.background.default,
+                    color: theme.palette.primary.main,
                 }}
             >
                 <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
@@ -35,7 +35,7 @@ const TopAppBar = ({ title }: Props) => {
                         left: "50%",
                         transform: "translateX(-50%)",
                         fontSize: 24,
-                        color: theme.palette.background.default,
+                        color: "inherit",
                     }}
                 >
                     {title}

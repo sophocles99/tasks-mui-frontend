@@ -28,7 +28,7 @@ const StatusBar = ({ time }: StatusBarProps) => {
                     justifyContent: "space-between",
                     px: "8px",
                     height: 52,
-                    color: theme.palette.background.default,
+                    color: theme.palette.primary.main,
                 }}
             >
                 <Typography
@@ -46,7 +46,7 @@ const StatusBar = ({ time }: StatusBarProps) => {
                         transform: "translateX(-50%)",
                         width: 24,
                         height: 24,
-                        bgcolor: theme.palette.background.default,
+                        bgcolor: theme.palette.primary.main,
                         borderRadius: "50%",
                     }}
                 />

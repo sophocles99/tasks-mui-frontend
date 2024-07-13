@@ -1,4 +1,8 @@
-import { BatteryFull, SignalCellularAlt, Wifi } from "@mui/icons-material";
+import {
+    BatteryFull,
+    SignalCellular4Bar,
+    SignalWifi2Bar,
+} from "@mui/icons-material";
 import {
     AppBar,
     Box,
@@ -22,6 +26,7 @@ const StatusBar = ({ time }: StatusBarProps) => {
                 disableGutters={true}
                 sx={{
                     justifyContent: "space-between",
+                    px: "8px",
                     height: 52,
                     color: theme.palette.background.default,
                 }}
@@ -53,26 +58,12 @@ const StatusBar = ({ time }: StatusBarProps) => {
                     }}
                 >
                     <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
-                        <SignalCellularAlt fontSize="small" />
+                        <SignalWifi2Bar fontSize="small" />
                     </IconButton>
-                    <IconButton
-                        size="small"
-                        sx={{
-                            p: 0,
-                            ml: 0.5,
-                            color: "inherit",
-                        }}
-                    >
-                        <Wifi fontSize="small" />
+                    <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
+                        <SignalCellular4Bar fontSize="small" />
                     </IconButton>
-                    <IconButton
-                        size="small"
-                        sx={{
-                            p: 0,
-                            ml: 0.5,
-                            color: "inherit",
-                        }}
-                    >
+                    <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
                         <BatteryFull fontSize="small" />
                     </IconButton>
                 </Box>

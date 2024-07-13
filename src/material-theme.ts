@@ -14,8 +14,8 @@ const materialTheme = createTheme({
                     paddingLeft: 16,
                     paddingRight: 16,
                     "@media (min-width:600px)": {
-                        paddingLeft: "24px",
-                        paddingRight: "24px",
+                        paddingLeft: 16,
+                        paddingRight: 16,
                     },
                 },
             },

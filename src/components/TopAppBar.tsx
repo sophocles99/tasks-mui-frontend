@@ -1,7 +1,17 @@
-import { AppBar, IconButton, Toolbar, useTheme } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { AccountCircle, Menu } from "@mui/icons-material";
+import {
+    AppBar,
+    IconButton,
+    Toolbar,
+    Typography,
+    useTheme,
+} from "@mui/material";
 
-const TopAppBar = () => {
+interface Props {
+    title: string;
+}
+
+const TopAppBar = ({ title }: Props) => {
     const theme = useTheme();
 
     return (
@@ -11,12 +21,27 @@ const TopAppBar = () => {
                 disableGutters={true}
                 sx={{
                     justifyContent: "space-between",
-                    height: 52,
+                    height: 64,
                     color: theme.palette.background.default,
                 }}
             >
-                <IconButton>
-                    <Menu></Menu>
+                <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
+                    <Menu fontSize="medium"></Menu>
+                </IconButton>
+                <Typography
+                    variant="body2"
+                    sx={{
+                        position: "absolute",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        fontSize: 24,
+                        color: theme.palette.background.default,
+                    }}
+                >
+                    {title}
+                </Typography>
+                <IconButton size="small" sx={{ p: 0, color: "inherit" }}>
+                    <AccountCircle fontSize="medium"></AccountCircle>
                 </IconButton>
             </Toolbar>
         </AppBar>

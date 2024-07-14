@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getTasks, patchTask } from "./api";
 import "./App.css";
 import StatusBar from "./components/StatusBar";
+import TaskDialog from "./components/TaskDialog";
 import TaskList from "./components/TaskList";
 import TopAppBar from "./components/TopAppBar";
 
@@ -11,6 +12,9 @@ function App() {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [tasks, setTasks] = useState<FullTask[]>([]);
+    const [taskDialogOpen, setTaskDialogOpen] = useState(false);
+    const [taskDialogTask, setTaskDialogTask] = useState<FullTask | null>(null);
+    const [taskDialogMode, setTaskDialogMode] = useState<TaskDialogMode>("add");
     const theme = useTheme();
 
     useEffect(() => {
@@ -48,6 +52,21 @@ function App() {
         }
     };
 
+    const handleOpenTaskDialog = (task: FullTask | null = null) => {
+        if (task) {
+            setTaskDialogTask(task);
+            setTaskDialogMode("edit");
+        } else {
+            setTaskDialogTask(null);
+            setTaskDialogMode("add");
+        }
+        setTaskDialogOpen(true);
+    };
+
+    const handleSaveTask = (task: NewTask | FullTask) => {
+        console.log("Saving task:", task);
+    };
+
     return (
         <div className="app">
             <Container
@@ -58,7 +77,18 @@ function App() {
             >
                 <StatusBar time="9:30" />
                 <TopAppBar title="Tasks" />
-                <TaskList tasks={tasks} onStatusChange={handleStatusChange} />
+                <TaskList
+                    tasks={tasks}
+                    onStatusChange={handleStatusChange}
+                    onOpenTaskDialog={handleOpenTaskDialog}
+                />
+                <TaskDialog
+                    open={taskDialogOpen}
+                    onClose={() => setTaskDialogOpen(false)}
+                    onSave={handleSaveTask}
+                    task={taskDialogTask}
+                    mode={taskDialogMode}
+                />
             </Container>
         </div>
     );

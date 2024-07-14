@@ -1,5 +1,7 @@
 type Status = "done" | "not done";
 
+type TaskDialogMode = "add" | "edit";
+
 interface NewTask {
     title: string;
     description: string;

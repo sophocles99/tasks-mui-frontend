@@ -1,12 +1,37 @@
 import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material";
-import { Checkbox, ListItem, ListItemText, useTheme } from "@mui/material";
+import {
+    Checkbox,
+    ListItem,
+    ListItemButton,
+    ListItemText,
+    Theme,
+    styled,
+    useTheme,
+} from "@mui/material";
+
+interface StyledComponentProps {
+    theme: Theme;
+}
+
+const StyledListItem = styled(ListItem)(({ theme }: StyledComponentProps) => ({
+    paddingLeft: theme.spacing(0),
+    width: "100%",
+}));
+
+const StyledListItemButton = styled(ListItemButton)(
+    ({ theme }: StyledComponentProps) => ({
+        width: "100%",
+        paddingLeft: theme.spacing(2),
+    })
+);
 
 interface Props {
     task: FullTask;
+    onClick: () => void;
     onStatusChange: (id: string, newStatus: Status) => void;
 }
 
-const TaskListItem = ({ task, onStatusChange }: Props) => {
+const TaskListItem = ({ task, onStatusChange, onClick }: Props) => {
     const { id, title, status } = task;
     const theme = useTheme();
 
@@ -17,7 +42,7 @@ const TaskListItem = ({ task, onStatusChange }: Props) => {
     };
 
     return (
-        <ListItem
+        <StyledListItem
             sx={{
                 height: 56,
                 borderRadius: 2,
@@ -34,8 +59,16 @@ const TaskListItem = ({ task, onStatusChange }: Props) => {
                 />
             }
         >
-            <ListItemText sx={{ color: "inherit" }}>{title}</ListItemText>
-        </ListItem>
+            <StyledListItemButton
+                disableGutters={true}
+                onClick={onClick}
+                theme={theme}
+            >
+                <ListItemText sx={{ color: "inherit", whiteSpace: "nowrap" }}>
+                    {title}
+                </ListItemText>
+            </StyledListItemButton>
+        </StyledListItem>
     );
 };
 

@@ -1,12 +1,14 @@
+import { CheckBoxOutlineBlank, CheckBoxOutlined } from "@mui/icons-material";
 import {
     Button,
+    Checkbox,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
     FormControlLabel,
-    Switch,
     TextField,
+    useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -19,6 +21,7 @@ interface Props {
 }
 
 const TaskDialog = ({ open, onClose, onSave, task = null, mode }: Props) => {
+    const theme = useTheme();
     const [currentTask, setCurrentTask] = useState<NewTask | FullTask>({
         title: "",
         description: "",
@@ -44,7 +47,22 @@ const TaskDialog = ({ open, onClose, onSave, task = null, mode }: Props) => {
     };
 
     return (
-        <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+        <Dialog
+            open={open}
+            onClose={onClose}
+            maxWidth="sm"
+            PaperProps={{
+                style: {
+                    backgroundColor: theme.palette.background.default,
+                },
+            }}
+            sx={{
+                "& .MuiDialog-paper": {
+                    maxWidth: "344px",
+                    margin: "0 auto",
+                },
+            }}
+        >
             <DialogTitle>
                 {mode === "add" ? "New Task" : "Edit Task"}
             </DialogTitle>
@@ -73,10 +91,12 @@ const TaskDialog = ({ open, onClose, onSave, task = null, mode }: Props) => {
                 {mode === "edit" && "status" in currentTask && (
                     <FormControlLabel
                         control={
-                            <Switch
+                            <Checkbox
                                 name="status"
                                 checked={currentTask.status === "done"}
                                 onChange={handleChange}
+                                icon={<CheckBoxOutlineBlank />}
+                                checkedIcon={<CheckBoxOutlined />}
                             />
                         }
                         label="Done"

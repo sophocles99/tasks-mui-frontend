@@ -15,12 +15,10 @@ interface StyledComponentProps {
 
 const StyledListItem = styled(ListItem)(({ theme }: StyledComponentProps) => ({
     paddingLeft: theme.spacing(0),
-    width: "100%",
 }));
 
 const StyledListItemButton = styled(ListItemButton)(
     ({ theme }: StyledComponentProps) => ({
-        width: "100%",
         paddingLeft: theme.spacing(2),
     })
 );

@@ -8,7 +8,7 @@ interface Props {
 
 const TaskList = ({ tasks, onStatusChange }: Props) => {
     return (
-        <List>
+        <List sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
             {tasks.map((task) => (
                 <TaskListItem
                     key={task.id}

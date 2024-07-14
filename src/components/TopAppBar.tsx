@@ -22,7 +22,7 @@ const TopAppBar = ({ title }: Props) => {
                 sx={{
                     justifyContent: "space-between",
                     height: 64,
-                    color: theme.palette.primary.main,
+                    color: theme.palette.text.primary,
                 }}
             >
                 <IconButton size="small" sx={{ p: 0, color: "inherit" }}>

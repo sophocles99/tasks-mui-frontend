@@ -50,7 +50,12 @@ function App() {
 
     return (
         <div className="app">
-            <Container sx={{ bgcolor: theme.palette.background.default }}>
+            <Container
+                sx={{
+                    height: "100%",
+                    bgcolor: theme.palette.background.default,
+                }}
+            >
                 <StatusBar time="9:30" />
                 <TopAppBar title="Tasks" />
                 <TaskList tasks={tasks} onStatusChange={handleStatusChange} />

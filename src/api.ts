@@ -4,7 +4,6 @@ axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const getTasks = async (): Promise<FullTask[]> => {
     const response = await axios.get("tasks/");
-    console.log(response.data);
     return response.data;
 };
 

@@ -2,6 +2,7 @@
     width: 360px;
     height: 800px;
     border-radius: 28px;
-    border: 8px solid #c4c6d0;
+    border: 8px solid #c4c6c8;
     overflow: auto;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 }

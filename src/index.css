@@ -8,5 +8,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #808080;
+    /* background-color: #808080; */
+    background-color: rgb(192, 193, 194);
 }
